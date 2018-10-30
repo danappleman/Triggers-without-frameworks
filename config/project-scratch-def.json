@@ -1,0 +1,10 @@
+{
+    "orgName": "Triggers without frameworks",
+    "edition": "Developer",
+	"hasSampleData": "true",
+    "orgPreferences" : {
+        "enabled": ["S1DesktopEnabled"]
+    },
+	"features" : ["AuthorApex","CustomApps","CustomTabs"]
+
+}
