@@ -1,6 +1,6 @@
 public with sharing class taskTrackCount {
     
-    public static void handleTrigger(TriggerOperation operationType, List<Task> newList, list<Task> oldList)
+    public static void handleTrigger(TriggerOperation operationType, List<Task> newList, list<Task> oldList, simpleLeadUpdater leadUpdater)
     {
         Set<ID> leadIds = new Set<ID>();
 
@@ -32,18 +32,16 @@ public with sharing class taskTrackCount {
             taskCounts.put((ID)ar.get('WhoId'), (Integer)ar.get('items'));
         }
 
-        List<Lead> leadsToUpdate = new List<Lead>();
         for(Lead ld: leads)
         {
             if(ld.Task_Count__c != taskCounts.get(ld.Id))
             {
-                ld.Task_Count__c = taskCounts.get(ld.id);
-                system.debug('taskTriggerTrackCount changing task count to ' + ld.Task_Count__c + ' lead: ' + ld.id);
-                leadsToUpdate.add(ld);
+                Lead toUpdate = leadUpdater.getLead(ld.id);
+                toUpdate.Task_Count__c = taskCounts.get(ld.id);
+                system.debug('taskTriggerTrackCount changing task count to ' + toUpdate.Task_Count__c + ' lead: ' + ld.id);
             }
         }
 
-        if(leadsToUpdate.size()>0) update leadsToUpdate;
     }
 
 }

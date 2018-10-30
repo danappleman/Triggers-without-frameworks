@@ -1,6 +1,6 @@
 public with sharing class taskSetStatus {
     
-    public static void handleTrigger(List<Task> newTasks) {
+    public static void handleTrigger(List<Task> newTasks, simpleLeadUpdater leadUpdater) {
         // When a task referencing a lead is created, look at it's status. 
         // If 'Open - Not Contacted', set it to 'Working - Contacted'
         // If 'Working - Contacted', set it to 'Working - Harder'
@@ -13,7 +13,6 @@ public with sharing class taskSetStatus {
         }
 
         List<Lead> leads = [Select ID, Status from Lead where ID in :leadIds];
-        List<Lead> leadsToUpdate = new List<Lead>();
         for(Lead ld: leads)
         {
             system.debug('taskTriggerSetStatus current lead status: ' + ld.status + ' lead: ' + lead.id);
@@ -22,19 +21,18 @@ public with sharing class taskSetStatus {
             {
                 when 'Open - Not Contacted'
                 {
-                    ld.status = 'Working - Contacted';
-                    system.debug('taskTriggerSetStatus setting lead status to ' + ld.status + ' lead: ' + lead.id);
-                    leadsToUpdate.add(ld);
+                    Lead toUpdate = leadUpdater.getLead(ld.id);
+                    toUpdate.status = 'Working - Contacted';
+                    system.debug('taskTriggerSetStatus setting lead status to ' + toupdate.status + ' lead: ' + lead.id);
                 }
                     
                 when 'Working - Contacted' {
-                    ld.status = 'Working Harder';
-                    system.debug('taskTriggerSetStatus setting lead status to ' + ld.status + ' lead: ' + lead.id);
-                    leadsToUpdate.add(ld);
+                    Lead toUpdate = leadUpdater.getLead(ld.id);
+                    toUpdate.status = 'Working Harder';
+                    system.debug('taskTriggerSetStatus setting lead status to ' + toUpdate.status + ' lead: ' + lead.id);
                 }
             }
         }
-        if(leadsToUpdate.size()>0) update leadsToUpdate;
 
     }
 }
