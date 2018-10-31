@@ -30,7 +30,7 @@ public with sharing class TestLeadActions {
                                         status = leadstatus,
                                         Company = 'c' + xs,
                                         email = 'e' + xs + '@pluralsight.com',
-                                        Bypass_Declarative__c = 1));
+                                        Bypass_Declarative__c = 0));
         }
         insert leadsToInsert;
     }

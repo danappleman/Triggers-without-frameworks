@@ -15,6 +15,13 @@ trigger taskTrigger on Task (before insert, after insert, before update, after u
         taskTrackCount.handleTrigger(trigger.operationType, trigger.new, trigger.old, leadUpdater);
     }
 
+    List<ITriggerExtension> dyanmicTriggers = TriggerExtensionSupport.getTriggerClasses('Task');
+    for(ITriggerExtension trig: dyanmicTriggers)
+    {
+        trig.HandleTrigger(trigger.operationType, trigger.new, trigger.old, 
+                            trigger.newMap, trigger.oldMap);
+    }
+
     leadUpdater.updateLeads();
 
 }
