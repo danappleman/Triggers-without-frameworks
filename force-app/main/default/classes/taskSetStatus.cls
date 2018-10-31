@@ -11,7 +11,8 @@ public with sharing class taskSetStatus {
 
         for(Task t: newTasks)
         {
-            if(t.whoId!=null && t.whoID.getSObjectType()==Schema.Lead.SObjectType) leadIds.add(t.whoId);
+            if(t.whoId!=null && t.whoID.getSObjectType()==Schema.Lead.SObjectType && 
+                !t.Declarative_Created__c) leadIds.add(t.whoId);
         }
 
         List<Lead> leads = [Select ID, Status from Lead where ID in :leadIds];

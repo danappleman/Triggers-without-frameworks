@@ -89,7 +89,7 @@
                 <stringValue>$User.Id </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_9737844410</name>
+        <name>formula_2_myRule_1_A1_4209396572</name>
         <dataType>String</dataType>
         <expression>{!$User.Id}</expression>
     </formulas>
@@ -115,7 +115,7 @@
         <dataType>Boolean</dataType>
         <expression>NOT( ISBLANK( {!myVariable_old.Email})  &amp;&amp; CONTAINS(&#39;gmail.com,hotmail.com,yahoo.com&#39;, {!myVariable_old.Email}) )</expression>
     </formulas>
-    <interviewLabel>FollowUpOnRealAccounts-1_InterviewLabel</interviewLabel>
+    <interviewLabel>FollowUpOnRealAccounts-2_InterviewLabel</interviewLabel>
     <label>FollowUpOnRealAccounts</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -147,6 +147,42 @@
         <label>Create Account Followup Task</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Declarative Created</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Declarative_Created__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <processMetadataValues>
                 <name>dataType</name>
@@ -210,7 +246,7 @@
             </processMetadataValues>
             <field>OwnerId</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_9737844410</elementReference>
+                <elementReference>formula_2_myRule_1_A1_4209396572</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>

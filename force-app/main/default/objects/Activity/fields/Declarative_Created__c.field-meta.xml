@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Declarative_Created__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Set true if activity is created declaratively</description>
+    <externalId>false</externalId>
+    <label>Declarative Created</label>
+    <type>Checkbox</type>
+</CustomField>
