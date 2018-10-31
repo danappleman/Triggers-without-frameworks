@@ -29,7 +29,8 @@ public with sharing class TestLeadActions {
             leadsToInsert.add(new Lead(FirstName = 'f'+ xs, LastName = 'l' + xs,
                                         status = leadstatus,
                                         Company = 'c' + xs,
-                                        email = 'e' + xs + '@pluralsight.com'));
+                                        email = 'e' + xs + '@pluralsight.com',
+                                        Bypass_Declarative__c = 1));
         }
         insert leadsToInsert;
     }

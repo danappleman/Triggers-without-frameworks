@@ -89,7 +89,7 @@
                 <stringValue>$User.Id </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_4209396572</name>
+        <name>formula_2_myRule_1_A1_0743918911</name>
         <dataType>String</dataType>
         <expression>{!$User.Id}</expression>
     </formulas>
@@ -97,25 +97,33 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>NOT( ISBLANK( [Lead].Email)  &amp;&amp; CONTAINS(&#39;gmail.com,hotmail.com,yahoo.com&#39;, [Lead].Email) )</stringValue>
+                <stringValue>NOT( ISBLANK( [Lead].Email)  &amp;&amp; CONTAINS(&#39;gmail.com,hotmail.com,yahoo.com&#39;, [Lead].Email) ) &amp;&amp; 
+(ISNEW() &amp;&amp; [Lead].Bypass_Declarative__c=0 || 
+NOT(ISNEW()) &amp;&amp; NOT(ISCHANGED( [Lead].Bypass_Declarative__c )) )</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
-        <expression>NOT( ISBLANK( {!myVariable_current.Email})  &amp;&amp; CONTAINS(&#39;gmail.com,hotmail.com,yahoo.com&#39;, {!myVariable_current.Email}) )</expression>
-    </formulas>
+        <expression>NOT( ISBLANK( {!myVariable_current.Email})  &amp;&amp; CONTAINS(&#39;gmail.com,hotmail.com,yahoo.com&#39;, {!myVariable_current.Email}) ) &amp;&amp; 
+(ISNEW() &amp;&amp; {!myVariable_current.Bypass_Declarative__c}=0 || 
+NOT(ISNEW()) &amp;&amp; NOT(ISCHANGED( {!myVariable_current.Bypass_Declarative__c} )) )</expression>
+     </formulas>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>NOT( ISBLANK( [Lead].Email)  &amp;&amp; CONTAINS(&#39;gmail.com,hotmail.com,yahoo.com&#39;, [Lead].Email) )</stringValue>
+                <stringValue>NOT( ISBLANK( [Lead].Email)  &amp;&amp; CONTAINS(&#39;gmail.com,hotmail.com,yahoo.com&#39;, [Lead].Email) ) &amp;&amp; 
+(ISNEW() &amp;&amp; [Lead].Bypass_Declarative__c=0 || 
+NOT(ISNEW()) &amp;&amp; NOT(ISCHANGED( [Lead].Bypass_Declarative__c )) )</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1_pmetrule</name>
         <dataType>Boolean</dataType>
-        <expression>NOT( ISBLANK( {!myVariable_old.Email})  &amp;&amp; CONTAINS(&#39;gmail.com,hotmail.com,yahoo.com&#39;, {!myVariable_old.Email}) )</expression>
+        <expression>NOT( ISBLANK( {!myVariable_old.Email})  &amp;&amp; CONTAINS(&#39;gmail.com,hotmail.com,yahoo.com&#39;, {!myVariable_old.Email}) ) &amp;&amp; 
+(ISNEW() &amp;&amp; {!myVariable_old.Bypass_Declarative__c}=0 || 
+NOT(ISNEW()) &amp;&amp; NOT(ISCHANGED( {!myVariable_old.Bypass_Declarative__c} )) )</expression>
     </formulas>
-    <interviewLabel>FollowUpOnRealAccounts-2_InterviewLabel</interviewLabel>
+    <interviewLabel>FollowUpOnRealAccounts-4_InterviewLabel</interviewLabel>
     <label>FollowUpOnRealAccounts</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -246,7 +254,7 @@
             </processMetadataValues>
             <field>OwnerId</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_4209396572</elementReference>
+                <elementReference>formula_2_myRule_1_A1_0743918911</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
